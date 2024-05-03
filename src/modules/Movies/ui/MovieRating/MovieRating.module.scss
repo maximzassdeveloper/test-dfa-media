@@ -1,0 +1,20 @@
+.rating {
+	font-size: 20px;
+	font-weight: 700;
+
+	&.green {
+		color: var(--success);
+	}
+
+	&.grey {
+		color: #a4a4a4;
+	}
+
+	&.red {
+		color: var(--danger);
+	}
+
+	&.small {
+		font-size: 16px;
+	}
+}

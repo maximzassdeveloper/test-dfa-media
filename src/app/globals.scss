@@ -1,0 +1,66 @@
+:root {
+	--main: #fff;
+	--secondary: #a3a3a3;
+	--bg: #161616;
+	--light-bg: #3d3d3d;
+	--hover-bg: #4d4d4d;
+
+	--danger: #c63636;
+	--success: #1f9031;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: var(--font-inter);
+	color: var(--main);
+	outline: none;
+}
+
+body {
+	background: var(--bg);
+}
+
+.fade {
+	&-enter {
+		opacity: 0;
+	}
+
+	&-enter-active {
+		opacity: 1;
+		transition: opacity 300ms;
+	}
+
+	&-exit {
+		opacity: 1;
+	}
+
+	&-exit-active {
+		opacity: 0;
+		transition: opacity 300ms;
+	}
+}
+
+.fade-down {
+	&-enter {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+
+	&-enter-active {
+		opacity: 1;
+		transition: opacity 200ms, transform 300ms;
+		transform: translateY(0);
+	}
+
+	&-exit {
+		opacity: 1;
+	}
+
+	&-exit-active {
+		opacity: 0;
+		transition: opacity 200ms, transform 300ms;
+		transform: translateY(10px);
+	}
+}

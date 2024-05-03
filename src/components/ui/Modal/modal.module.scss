@@ -1,0 +1,42 @@
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.mask {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 998;
+	display: block;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	background: rgba(#000, 0.7);
+	transition: 0.2s;
+}
+
+.content {
+	position: fixed;
+	z-index: 999;
+	min-width: 250px;
+	max-width: 100%;
+	padding: 20px;
+	margin: 20px;
+	// background: var(--bg-color);
+	border-radius: 5px;
+}
+
+.sentinel {
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	outline: none;
+}

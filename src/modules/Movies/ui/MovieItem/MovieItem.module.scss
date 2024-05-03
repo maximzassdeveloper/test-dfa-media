@@ -1,0 +1,51 @@
+.movieItem {
+	position: relative;
+	width: 230px;
+	max-width: 100%;
+	cursor: pointer;
+
+	&:hover {
+		.info {
+			opacity: 1;
+			transform: translateY(0px);
+		}
+	}
+}
+
+.poster {
+	display: block;
+	max-width: 100%;
+}
+
+.info {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: linear-gradient(180deg, rgba(#171717, 0), rgba(#171717, 0.9) 60%);
+	padding: 20px 13px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	transition: 0.2s;
+	opacity: 0;
+	transform: translateY(20px);
+}
+
+.infoContent {
+	min-height: 128px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.title {
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.date {
+	margin-top: auto;
+	font-size: 14px;
+}
