@@ -20,7 +20,7 @@ export interface PortalProps {
 export const Portal: FC<PortalProps> = (props) => {
 	const { children, visible, className } = props
 
-	const containerRef = useRef<HTMLDivElement>(document.createElement('div'))
+	const containerRef = useRef<HTMLDivElement>(document?.createElement('div'))
 	const delayRef = useRef<NodeJS.Timeout>()
 	const propsRef = useCashedProps(props)
 

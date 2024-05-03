@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { ReactQueryClientProvider } from '@/config/reactQuery'
 import { Header } from '@/components/widgets/Header/Header'
 import './globals.scss'
+import { StoreProvider } from '@/store/StoreProvider'
 
 const ubuntu = Inter({
 	subsets: ['cyrillic'],
@@ -22,12 +23,14 @@ export default function RootLayout({
 	return (
 		<html lang='ru' suppressHydrationWarning>
 			<body className={ubuntu.variable} suppressHydrationWarning>
-				<ReactQueryClientProvider>
-					<div>
-						<Header />
-						{children}
-					</div>
-				</ReactQueryClientProvider>
+				<StoreProvider>
+					<ReactQueryClientProvider>
+						<div>
+							<Header />
+							{children}
+						</div>
+					</ReactQueryClientProvider>
+				</StoreProvider>
 			</body>
 		</html>
 	)

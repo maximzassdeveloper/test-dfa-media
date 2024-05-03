@@ -1,5 +1,5 @@
 import baseAxios from '@/config/axiosService'
-import { Movie } from '../model/movieTypes'
+import { Movie, MovieFilters } from '../model/movieTypes'
 
 export interface GetMoviesNowPlayingResponse {
 	page: number
@@ -15,8 +15,13 @@ export interface GetMoviesResponse {
 	results: Movie[]
 }
 
-export const getMovies = () => {
-	return baseAxios.get<GetMoviesResponse>('/discover/movie')
+export const getMovies = (filters: MovieFilters) => {
+	return baseAxios.get<GetMoviesResponse>('/discover/movie', {
+		params: {
+			sort_by: filters.sortBy,
+			with_genres: filters.genres?.join(','),
+		},
+	})
 }
 
 export interface GetSearchMoviesResponse {
