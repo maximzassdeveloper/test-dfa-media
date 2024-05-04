@@ -1,7 +1,5 @@
 export { Container } from './Container/Container'
 export { Input } from './Input/Input'
-export { Portal } from './Portal/Portal'
-export { Dialog } from './Dialog/Dialog'
 export { Modal } from './Modal/Modal'
 export { Popover } from './Popover/Popover'
 export { Select } from './Select/Select'

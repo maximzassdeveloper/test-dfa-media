@@ -61,6 +61,8 @@ export const Modal = (props: ModalProps) => {
       onClose?.()
     }
 
+    if (typeof document === undefined) return
+
     if (e.code === 'Tab') {
       if (document.activeElement === sentinelEndRef.current) {
         sentinelStartRef.current?.focus()

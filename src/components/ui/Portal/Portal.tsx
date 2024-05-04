@@ -17,15 +17,24 @@ export interface PortalProps {
   children: ReactNode
 }
 
+const createEl = () => {
+  if (typeof document !== undefined) {
+    return document?.createElement('div')
+  }
+  return null
+}
+
 export const Portal: FC<PortalProps> = (props) => {
   const { children, visible, className } = props
 
-  const containerRef = useRef<HTMLDivElement>(document?.createElement('div'))
+  const containerRef = useRef<HTMLDivElement | null>(null)
   const delayRef = useRef<NodeJS.Timeout>()
   const propsRef = useCashedProps(props)
 
   const removeContainer = useCallback(
     (force?: boolean) => {
+      if (!containerRef.current) return
+
       if (propsRef.current.lockScroll) {
         document.body.style.overflow = 'auto'
         document.body.style.width = ''
@@ -41,6 +50,12 @@ export const Portal: FC<PortalProps> = (props) => {
   )
 
   useEffect(() => {
+    containerRef.current = createEl()
+  }, [])
+
+  useEffect(() => {
+    if (!containerRef.current) return
+
     const { animationTimeout, lockScroll, destroyOnClose, dataTestId } = propsRef.current
     const container = containerRef.current
     clearTimeout(delayRef.current)
@@ -72,7 +87,7 @@ export const Portal: FC<PortalProps> = (props) => {
   }, [propsRef, visible, removeContainer])
 
   useEffect(() => {
-    if (className) {
+    if (className && containerRef.current) {
       containerRef.current.className = className
     }
   }, [className])
@@ -85,6 +100,10 @@ export const Portal: FC<PortalProps> = (props) => {
     }
     // eslint-disable-next-line
   }, [])
+
+  if (!containerRef.current) {
+    return null
+  }
 
   return createPortal(children, containerRef.current)
 }

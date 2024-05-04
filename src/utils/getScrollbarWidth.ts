@@ -1,4 +1,6 @@
 function getDefaultScrollbarWidth() {
+  if (typeof document === undefined) return 0
+
   const outer = document.createElement('div')
   outer.style.pointerEvents = 'none'
   outer.style.visibility = 'hidden'
