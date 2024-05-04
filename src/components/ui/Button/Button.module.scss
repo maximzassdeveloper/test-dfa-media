@@ -1,0 +1,31 @@
+.button {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  touch-action: manipulation;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 15px;
+  padding: 11px 20px;
+  color: var(--main);
+  border: 1px solid transparent;
+  transition: all 0.2s;
+
+  &:disabled:not(.loading) {
+    color: var(--disabled-text-color) !important;
+    cursor: not-allowed;
+    background: var(--disabled-color) !important;
+    border: 1px solid var(--disabled-border-color) !important;
+  }
+
+  &.primary {
+    background: var(--danger);
+  }
+
+  &.secondary {
+    background: var(--light-bg);
+  }
+}

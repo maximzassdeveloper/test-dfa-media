@@ -1,2 +1,3 @@
 export { authReducer } from './model/authSlice'
-export { AuthModal } from './ui/AuthModal'
+export { AuthModalWithBtn } from './ui/AuthModalWithBtn'
+export { useAuth } from './hooks/useAuth'

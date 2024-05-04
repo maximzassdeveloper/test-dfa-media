@@ -1,50 +1,56 @@
 .select {
-	width: 100%;
-	max-width: 400px;
+  width: 100%;
+  max-width: 300px;
 }
 
 .list {
-	display: flex;
-	flex-direction: column;
-	padding: 5px;
-	background: var(--light-bg);
-	border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+  background: var(--light-bg);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.input {
+  max-width: 300px !important;
 }
 
 .option {
-	width: 100%;
-	padding: 6px 7px;
-	color: var(--main);
-	cursor: pointer;
-	border-radius: 3px;
-	transition: 0.2s;
+  width: 100%;
+  padding: 6px 7px;
+  color: var(--main);
+  cursor: pointer;
+  border-radius: 3px;
+  transition: 0.2s;
 
-	&.selected {
-		background: var(--hover-bg);
+  &.selected {
+    background: var(--hover-bg);
 
-		&:hover {
-			background: var(--hover-bg);
-		}
-	}
+    &:hover {
+      background: var(--hover-bg);
+    }
+  }
 
-	&.disabled {
-		cursor: not-allowed;
-		opacity: 0.5;
-		background: transparent;
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background: transparent;
 
-		&:hover {
-			background: transparent;
-		}
-	}
+    &:hover {
+      background: transparent;
+    }
+  }
 
-	&:hover {
-		background: var(--hover-bg);
-	}
+  &:hover {
+    background: var(--hover-bg);
+  }
 }
 
 .label {
-	display: inline-block;
-	// font: var(--font-xxs);
-	font-weight: 500;
-	color: var(--secondary);
+  display: inline-block;
+  font-weight: 500;
+  color: var(--secondary);
+  margin-bottom: 5px;
 }

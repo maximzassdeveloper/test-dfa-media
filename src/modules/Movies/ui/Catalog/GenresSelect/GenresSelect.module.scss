@@ -1,0 +1,23 @@
+.genres {
+  background: var(--light-bg);
+  padding: 10px;
+  height: 200px;
+  border-radius: 15px;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}

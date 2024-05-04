@@ -1,7 +1,7 @@
-import { useAppSelector } from '@/store/storeHooks'
+import { useAppSelector } from '@/libs/store/storeHooks'
 
 export const useAuth = () => {
-	const auth = useAppSelector((state) => state.auth)
+  const auth = useAppSelector((state) => state.auth)
 
-	return auth
+  return auth
 }

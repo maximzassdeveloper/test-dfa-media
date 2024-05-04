@@ -1,24 +1,24 @@
 function getDefaultScrollbarWidth() {
-	const outer = document.createElement('div')
-	outer.style.pointerEvents = 'none'
-	outer.style.visibility = 'hidden'
-	outer.style.overflow = 'scroll'
-	document.body.appendChild(outer)
+  const outer = document.createElement('div')
+  outer.style.pointerEvents = 'none'
+  outer.style.visibility = 'hidden'
+  outer.style.overflow = 'scroll'
+  document.body.appendChild(outer)
 
-	const inner = document.createElement('div')
-	outer.appendChild(inner)
+  const inner = document.createElement('div')
+  outer.appendChild(inner)
 
-	const scrollbarWidth = outer.offsetWidth - inner.offsetWidth
+  const scrollbarWidth = outer.offsetWidth - inner.offsetWidth
 
-	outer.parentNode?.removeChild(outer)
+  outer.parentNode?.removeChild(outer)
 
-	return scrollbarWidth
+  return scrollbarWidth
 }
 
 export function getScrollbarWidth() {
-	const { width } = getComputedStyle(document.body, '::-webkit-scrollbar')
-	const match = width.match(/^(.*)px$/)
-	const value = Number(match?.[1])
+  const { width } = getComputedStyle(document.body, '::-webkit-scrollbar')
+  const match = width.match(/^(.*)px$/)
+  const value = Number(match?.[1])
 
-	return Number.isNaN(value) ? getDefaultScrollbarWidth() : value
+  return Number.isNaN(value) ? getDefaultScrollbarWidth() : value
 }

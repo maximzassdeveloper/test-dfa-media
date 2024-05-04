@@ -1,20 +1,31 @@
 .rating {
-	font-size: 20px;
-	font-weight: 700;
+  &.small {
+    .score {
+      font-size: 16px;
+    }
+  }
+}
 
-	&.green {
-		color: var(--success);
-	}
+.score {
+  font-size: 20px;
+  font-weight: 700;
 
-	&.grey {
-		color: #a4a4a4;
-	}
+  &.green {
+    color: var(--success);
+  }
 
-	&.red {
-		color: var(--danger);
-	}
+  &.grey {
+    color: #a4a4a4;
+  }
 
-	&.small {
-		font-size: 16px;
-	}
+  &.red {
+    color: var(--danger);
+  }
+}
+
+.views {
+  margin-left: 8px;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--main);
 }

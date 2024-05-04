@@ -1,43 +1,48 @@
 'use client'
 
-import { FC, useState } from 'react'
+import { FC, memo, useState } from 'react'
 import { MovieList } from '../MovieList/MovieList'
+import { Pagination } from '@/components/ui'
+import { useDebounce } from '@/hooks/useDebounce'
 import { useGetMovies } from '../../hooks/useGetMovies'
-import { Select } from '@/components/ui'
-import { MovieFilters, MovieSortType } from '../../model/movieTypes'
-import { SelectOption } from '@/components/ui/Select/Select'
+import { MovieFilters } from '../../model/movieTypes'
+import { SortBySelect } from './SortBySelect/SortBySelect'
+import { GenresSelect } from './GenresSelect/GenresSelect'
+import s from './Catalog.module.scss'
 
-const sortOptions: SelectOption<MovieSortType>[] = [
-	{
-		label: 'По популярности',
-		value: 'popularity.desc',
-	},
-	{
-		label: 'По дате выпуска',
-		value: 'primary_release_date.desc',
-	},
-	{
-		label: 'По рейтингу',
-		value: 'vote_average.desc',
-	},
-]
+export const Catalog: FC = memo(() => {
+  const [filters, setFilters] = useState<MovieFilters>({})
+  const debouncedFilters = useDebounce(filters, 300)
 
-export const Catalog: FC = () => {
-	const [filters, setFilters] = useState({} as MovieFilters)
-	const { data, isLoading } = useGetMovies(filters)
+  const { data, isLoading } = useGetMovies(debouncedFilters)
 
-	console.log(filters)
+  const changeFiltersHandler = (key: keyof MovieFilters, val: MovieFilters[keyof MovieFilters]) => {
+    setFilters((prev) => ({ ...prev, [key]: val }))
+  }
 
-	return (
-		<div>
-			<div>
-				<Select<MovieSortType>
-					options={sortOptions}
-					value={filters['sortBy']}
-					onChange={(val) => setFilters((prev) => ({ ...prev, sortBy: val }))}
-				/>
-			</div>
-			<MovieList movies={data?.data.results ?? []} isLoading={isLoading} />
-		</div>
-	)
-}
+  return (
+    <div>
+      <div className={s.filters}>
+        <SortBySelect
+          sortValue={filters.sortBy}
+          onChange={(v) => changeFiltersHandler('sortBy', v)}
+        />
+        <GenresSelect
+          selectedGenreIds={filters.genres ?? []}
+          onChange={(v) => changeFiltersHandler('genres', v)}
+        />
+      </div>
+
+      <MovieList movies={data?.data.results ?? []} isLoading={isLoading} />
+
+      <Pagination
+        first={1}
+        current={data?.data.page ?? filters.page ?? 1}
+        /* АПИ и возвращает total_pages = 43952, 
+				но при обращении к странице больше 500 выдает ошибку */
+        last={Math.min(data?.data.total_pages ?? 500, 500)}
+        onClick={(v) => changeFiltersHandler('page', v)}
+      />
+    </div>
+  )
+})

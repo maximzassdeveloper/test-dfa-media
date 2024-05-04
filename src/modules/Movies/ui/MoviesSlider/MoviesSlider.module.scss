@@ -1,0 +1,73 @@
+.moviesSlider {
+  max-width: 1000px;
+  position: relative;
+  margin-bottom: 40px;
+
+  :global {
+    .swiper-button-prev,
+    .swiper-button-next {
+      color: var(--secondary) !important;
+
+      &:after {
+        font-size: 30px !important;
+      }
+
+      &:hover {
+        color: var(--main) !important;
+      }
+    }
+  }
+}
+
+.info {
+  position: relative;
+  z-index: 3;
+  padding: 60px 60px;
+}
+
+.movieSlide {
+  position: relative;
+  max-width: 100%;
+  height: 400px;
+  border-radius: 15px;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.backdrop {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: linear-gradient(90deg, #000 20%, transparent);
+}
+
+.moviePoster {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: inherit;
+  width: 800px;
+  max-width: 100%;
+  z-index: 1;
+}
+
+.movieTitle {
+  font-size: 32px;
+  font-weight: 700;
+  max-width: 500px;
+  margin-bottom: 15px;
+}
+
+.overview {
+  font-size: 16px;
+  line-height: 1.4em;
+  margin-top: 20px;
+  display: block;
+  max-width: 500px;
+}
