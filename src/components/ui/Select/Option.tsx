@@ -1,6 +1,6 @@
 import { classNames } from '@/utils/classNames'
 import { Value, SelectOption } from './Select'
-import s from './select.module.scss'
+import s from './Select.module.scss'
 
 interface OptionProps<T extends Value = string> {
   option: SelectOption<T>

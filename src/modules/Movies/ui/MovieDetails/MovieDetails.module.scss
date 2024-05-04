@@ -52,10 +52,44 @@
 
 .attributeLabel {
   display: block;
-  width: 200px;
+  min-width: 200px;
   color: var(--secondary);
 }
 
 .attributeValue {
   color: var(--main);
+}
+
+@media screen and (max-width: 998px) {
+  .movieDetails {
+    gap: 20px;
+  }
+
+  .posterContainer {
+    min-width: 250px;
+    min-height: 350px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .movieDetails {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .attributes {
+    font-size: 14px;
+  }
+
+  .attributeLabel {
+    min-width: auto;
+  }
+
+  .attributeValue {
+    margin-left: 10px;
+  }
 }

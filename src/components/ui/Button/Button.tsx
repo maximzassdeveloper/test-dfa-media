@@ -8,7 +8,7 @@ import s from './Button.module.scss'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
-  theme: 'secondary' | 'primary'
+  theme?: 'secondary' | 'primary'
   loading?: boolean
 }
 

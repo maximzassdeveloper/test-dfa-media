@@ -1,5 +1,6 @@
 import { FC, useState } from 'react'
 import { AuthModal } from './AuthModal'
+import s from './AuthModal.module.scss'
 
 export const AuthModalWithBtn: FC = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -7,7 +8,9 @@ export const AuthModalWithBtn: FC = () => {
   return (
     <>
       <AuthModal visible={isVisible} onChangeVisible={setIsVisible} />
-      <span onClick={() => setIsVisible(true)}>Войти</span>
+      <span className={s.link} onClick={() => setIsVisible(true)}>
+        Войти
+      </span>
     </>
   )
 }

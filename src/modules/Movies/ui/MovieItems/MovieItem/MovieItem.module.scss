@@ -16,6 +16,7 @@
 .poster {
   display: block;
   max-width: 100%;
+  object-fit: cover;
 }
 
 .info {
@@ -49,4 +50,24 @@
 .date {
   margin-top: auto;
   font-size: 14px;
+}
+
+@media screen and (max-width: 500px) {
+  .movieItem {
+    height: 270px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+
+  .info {
+    position: relative;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .movieItem {
+    height: 230px;
+  }
 }

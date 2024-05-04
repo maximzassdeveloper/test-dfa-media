@@ -1,6 +1,6 @@
 import { Option } from './Option'
 import { SelectOption, Value } from './Select'
-import s from './select.module.scss'
+import s from './Select.module.scss'
 
 interface SelectListProps<T extends Value> {
   options: SelectOption<T>[]
