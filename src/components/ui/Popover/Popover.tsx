@@ -12,6 +12,7 @@ interface PopoverProps {
   className?: string
   visible?: boolean
   trigger?: VisibleTrigger | VisibleTrigger[]
+  mountOnEnter?: boolean
   // Pick width of target element
   autoWidth?: boolean
   onVisibleChange?: (visible: boolean) => void
@@ -29,6 +30,7 @@ export const Popover: FC<PopoverProps> = (props) => {
     trigger = ['click'],
     visible: outVisible,
     onVisibleChange,
+    mountOnEnter,
     className,
     autoWidth,
     placement,
@@ -86,7 +88,7 @@ export const Popover: FC<PopoverProps> = (props) => {
       offset={offset}
       boundary={boundary}
     >
-      <CSSTransition in={visible} timeout={300} classNames='fade-down'>
+      <CSSTransition in={visible} timeout={300} classNames='fade-down' mountOnEnter={mountOnEnter}>
         <div className={className}>{content}</div>
       </CSSTransition>
     </Dialog>

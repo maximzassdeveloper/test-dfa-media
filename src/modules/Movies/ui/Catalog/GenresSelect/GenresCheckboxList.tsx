@@ -1,7 +1,6 @@
-import { ChangeEvent, FC, useEffect } from 'react'
+import { ChangeEvent, FC } from 'react'
 import { Checkbox, Spinner } from '@/components/ui'
 import { useGetGenres } from '../../../hooks/useGetGenres'
-import s from './GenresSelect.module.scss'
 
 interface GenresCheckboxListProps {
   selectedGenreIds: number[]
@@ -28,27 +27,19 @@ const GenresCheckboxList: FC<GenresCheckboxListProps> = (props) => {
     onChange(newGenres)
   }
 
-  useEffect(() => {
-    console.log('mounted')
-  }, [])
-
-  return (
-    <div className={s.genres}>
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        data?.data.genres.map((genre) => (
-          <Checkbox
-            name='genre'
-            key={genre.id}
-            value={genre.id}
-            label={genre.name}
-            checked={selectedGenreIds.includes(genre.id)}
-            onChange={changeGenreHandler}
-          />
-        ))
-      )}
-    </div>
+  return isLoading ? (
+    <Spinner />
+  ) : (
+    data?.data.genres.map((genre) => (
+      <Checkbox
+        name='genre'
+        key={genre.id}
+        value={genre.id}
+        label={genre.name}
+        checked={selectedGenreIds.includes(genre.id)}
+        onChange={changeGenreHandler}
+      />
+    ))
   )
 }
 
